@@ -1,9 +1,9 @@
 <?php
 
-namespace Aacotroneo\Saml2\Http\Controllers;
+namespace Toonboom\Saml2\Http\Controllers;
 
-use Aacotroneo\Saml2\Events\Saml2LoginEvent;
-use Aacotroneo\Saml2\Saml2Auth;
+use Toonboom\Saml2\Events\Saml2LoginEvent;
+use Toonboom\Saml2\Saml2Auth;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
@@ -48,7 +48,7 @@ class Saml2Controller extends Controller
 
         $redirectUrl = $user->getIntendedUrl();
 
-        if ($redirectUrl !== null) {
+        if ($redirectUrl !== null && Str::startsWith($redirectUrl, '/saml2')) {
             return redirect($redirectUrl);
         } else {
 

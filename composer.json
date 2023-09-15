@@ -1,39 +1,39 @@
 {
-    "name": "aacotroneo/laravel-saml2",
+    "name": "toonboom/laravel-saml2",
     "description": "A Laravel package for Saml2 integration as a SP (service provider) for multiple IdPs, based on OneLogin toolkit which is much more lightweight than simplesamlphp.",
     "keywords": ["laravel","saml", "saml2", "onelogin"],
-    "homepage": "https://github.com/aacotroneo/laravel-saml2",
+    "homepage": "https://github.com/toonboom/laravel-saml2",
     "license": "MIT",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "authors": [
         {
             "name": "aacotroneo",
             "email": "aacotroneo@gmail.com"
         },
         {
-            "name": "Niraj Patkar",
-            "email": "niraj@alphonso.in"
+            "name": "Jerome Harfouche",
+            "email": "jharfouche@toonboom.com"
         }
     ],
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=8.1.0",
         "ext-openssl": "*",
-        "illuminate/support": ">=5.0.0",
-        "onelogin/php-saml": "^3.0.0"
+        "illuminate/support": ">=8.0.0",
+        "onelogin/php-saml": "^4.1"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "10.0"
     },
     "autoload": {
         "psr-0": {
-            "Aacotroneo\\Saml2\\": "src/"
+            "Toonboom\\Saml2\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Aacotroneo\\Saml2\\Saml2ServiceProvider"
+                "Toonboom\\Saml2\\Saml2ServiceProvider"
             ]
         }
     },

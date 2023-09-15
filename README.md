@@ -1,10 +1,4 @@
-# *Status*: Not Active
-This project is no longer maintained. I'd be glad to transfer ownership, or otherwise you can easily replace it by some of the many forks (let me know if someone wants to list theirs here, or some oher library). The library itself shouldn't change much, but there are occational changes needed to keep up with Laravel and PHP version updates
- * https://github.com/24Slides/laravel-saml2
-
-## Laravel 5 - Saml2
-
-[![Build Status](https://travis-ci.org/aacotroneo/laravel-saml2.svg)](https://travis-ci.org/aacotroneo/laravel-saml2)
+## Laravel - Saml2
 
 A Laravel package for Saml2 integration as a SP (service provider) based on  [OneLogin](https://github.com/onelogin/php-saml) toolkit, which is much lighter and easier to install than simplesamlphp SP. It doesn't need separate routes or session storage to work!
 
@@ -15,28 +9,16 @@ The aim of this library is to be as simple as possible. We won't mess with Larav
 You can install the package via composer:
 
 ```
-composer require aacotroneo/laravel-saml2
+composer require toonboom/laravel-saml2
 ```
 Or manually add this to your composer.json:
 
 **composer.json**
 ```json
-"aacotroneo/laravel-saml2": "*"
+"toonboom/laravel-saml2": "*"
 ```
 
-If you are using Laravel 5.5 and up, the service provider will automatically get registered.
-
-For older versions of Laravel (<5.5), you have to add the service provider:
-
-**config/app.php**
-```php
-'providers' => [
-        ...
-    	Aacotroneo\Saml2\Saml2ServiceProvider::class,
-]
-```
-
-Then publish the config files with `php artisan vendor:publish --provider="Aacotroneo\Saml2\Saml2ServiceProvider"`. This will add the files `app/config/saml2_settings.php` & `app/config/saml2/mytestidp1_idp_settings.php`, which you will need to customize.
+Then publish the config files with `php artisan vendor:publish --provider="Toonboom\Saml2\Saml2ServiceProvider"`. This will add the files `app/config/saml2_settings.php` & `app/config/saml2/mytestidp1_idp_settings.php`, which you will need to customize.
 
 The `mytestidp1_idp_settings.php` config is handled almost directly by  [OneLogin](https://github.com/onelogin/php-saml) so you should refer to that for full details, but we'll cover here what's really necessary. There are some other config about routes you may want to check, they are pretty strightforward.
 
@@ -160,7 +142,7 @@ For example, it can be:
 ```
 **App/Http/Controllers/MyNamespace/MySaml2Controller.php**
 ```php
-use Aacotroneo\Saml2\Http\Controllers\Saml2Controller;
+use Toonboom\Saml2\Http\Controllers\Saml2Controller;
 
 class MySaml2Controller extends Saml2Controller
 {
@@ -178,7 +160,7 @@ For example, it can be:
 
 **App/Providers/MyEventServiceProvider.php**
 ```php
-Event::listen('Aacotroneo\Saml2\Events\Saml2LoginEvent', function (Saml2LoginEvent $event) {
+Event::listen('Toonboom\Saml2\Events\Saml2LoginEvent', function (Saml2LoginEvent $event) {
     $messageId = $event->getSaml2Auth()->getLastMessageId();
     // Add your own code preventing reuse of a $messageId to stop replay attacks
 
@@ -239,10 +221,8 @@ For example, it can be:
 
 **App/Providers/MyEventServiceProvider.php**
 ```php
-Event::listen('Aacotroneo\Saml2\Events\Saml2LogoutEvent', function ($event) {
+Event::listen('Toonboom\Saml2\Events\Saml2LogoutEvent', function ($event) {
     Auth::logout();
     Session::save();
 });
 ```
-
-That's it. Feel free to ask any questions, make PR or suggestions, or open Issues.
