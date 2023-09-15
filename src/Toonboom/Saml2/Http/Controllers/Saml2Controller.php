@@ -6,6 +6,7 @@ use Toonboom\Saml2\Events\Saml2LoginEvent;
 use Toonboom\Saml2\Saml2Auth;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Saml2Controller extends Controller
 {
