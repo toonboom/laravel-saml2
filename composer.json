@@ -22,7 +22,7 @@
         "onelogin/php-saml": "^4.1"
     },
     "require-dev": {
-        "mockery/mockery": "0.9.*",
+        "mockery/mockery": "1.6.*",
         "phpunit/phpunit": "10.5.28"
     },
     "autoload": {
